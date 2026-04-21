@@ -18,17 +18,18 @@ if (!jsFile) {
   console.error('No JS entry file found in assets');
 }
 
+const buildTag = Date.now();
 const html = `<!doctype html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>FrutyStory</title>
-  ${cssFile ? `<link rel="stylesheet" href="/assets/${cssFile}">` : ''}
+  ${cssFile ? `<link rel="stylesheet" href="/assets/${cssFile}?v=${buildTag}">` : ''}
 </head>
 <body>
   <div id="root"></div>
-  ${jsFile ? `<script type="module" src="/assets/${jsFile}"></script>` : ''}
+  ${jsFile ? `<script type="module" src="/assets/${jsFile}?v=${buildTag}"></script>` : ''}
 </body>
 </html>`;
 
