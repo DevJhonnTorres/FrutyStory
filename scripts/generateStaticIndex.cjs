@@ -3,6 +3,7 @@ const path = require('path');
 
 const assetsDir = path.join(__dirname, '..', 'dist', 'client', 'assets');
 const outDir = path.join(__dirname, '..', 'dist');
+const outDirClient = path.join(__dirname, '..', 'dist', 'client');
 
 if (!fs.existsSync(assetsDir)) {
   console.error('Assets directory not found:', assetsDir);
@@ -32,4 +33,10 @@ const html = `<!doctype html>
 </html>`;
 
 fs.writeFileSync(path.join(outDir, 'index.html'), html);
+if (fs.existsSync(outDirClient)) {
+  fs.writeFileSync(path.join(outDirClient, 'index.html'), html);
+  console.log('Also wrote index.html to dist/client');
+} else {
+  console.log('dist/client not found — skipping client index write');
+}
 console.log('Generated static index.html referencing', jsFile, cssFile);
