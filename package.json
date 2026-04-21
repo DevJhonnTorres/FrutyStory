@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build && cp -R dist/client/* dist/ || true",
+    "build": "vite build && node scripts/generateStaticIndex.cjs && cp -R dist/client/* dist/ || true",
     "vercel-build": "npm run build",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
